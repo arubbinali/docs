@@ -1,10 +1,10 @@
-[Introduction to Software Engineering](https://www.coursera.org/learn/introduction-to-software-engineering?specialization=applied-artifical-intelligence-ibm-watson-ai)  
-[Introduction to Artificial Intelligence (AI)]()  
-[Generative AI: Introduction and Applications]()  
-[Generative AI: Prompt Engineering Basics]()  
-[Introduction to HTML, CSS, & JavaScript]()  
-[Python for Data Science, AI & Development]()  
-[Developing AI Applications with Python and Flask]()  
-[Building Generative AI-Powered Applications with Python]()  
-[Generative AI: Elevate your Software Development Career]()  
-[Software Developer Career Guide and Interview Preparation]()
+[Introduction to Software Engineering]
+[Introduction to Artificial Intelligence (AI)]
+[Generative AI: Introduction and Applications]
+[Generative AI: Prompt Engineering Basics]
+[Introduction to HTML, CSS, & JavaScript]  
+[Python for Data Science, AI & Development]
+[Developing AI Applications with Python and Flask]
+[Building Generative AI-Powered Applications with Python]
+[Generative AI: Elevate your Software Development Career]  
+[Software Developer Career Guide and Interview Preparation]

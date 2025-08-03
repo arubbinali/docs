@@ -3,7 +3,8 @@
 > ## Module 1
 
 1) Tk() & mainloop()
-        The main application window (which is often the only window being used by the application) is created by the tkinter method named Tk()
+
+        The main application window (which is often the only window being used by the application) is created by the tkinter method Tk()
         To start the controller, you have to invoke the main window's method, named mainloop()
 ```py
 import tkinter

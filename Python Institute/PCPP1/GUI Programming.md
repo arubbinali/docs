@@ -78,21 +78,21 @@
    - the dialog box is an example of a modal window
    - `askquestion()`, takes in 2 arguments, dialog window title & the text inside the window
 
-  code:
-   ```py
-   import tkinter
-   from tkinter import messagebox
-
-
-   def Click():
-       replay = messagebox.askquestion("Quit?", "Are you sure?")
-       if replay == 'yes':
-           skylight.destroy()
-
-
-   skylight = tkinter.Tk()
-   skylight.title("Skylight")
-   button = tkinter.Button(skylight, text="Bye!", command=Click)
-   button.place(x=10, y=10)
-   skylight.mainloop()
-   ```
+     code:
+      ```py
+      import tkinter
+      from tkinter import messagebox
+   
+   
+      def Click():
+          replay = messagebox.askquestion("Quit?", "Are you sure?")
+          if replay == 'yes':
+              skylight.destroy()
+   
+   
+      skylight = tkinter.Tk()
+      skylight.title("Skylight")
+      button = tkinter.Button(skylight, text="Bye!", command=Click)
+      button.place(x=10, y=10)
+      skylight.mainloop()
+      ```

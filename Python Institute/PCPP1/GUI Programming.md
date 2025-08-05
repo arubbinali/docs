@@ -76,7 +76,7 @@
    - modal window --> a window which grabs the whole of the application's focus
    - messagebox creates dialog boxes intended to ask questions, display messages, and to receive a user's reply
    - the dialog box is an example of a modal window
-   - askquestion(), takes in 2 arguments, dialog window title & the text inside the window
+   - `askquestion()`, takes in 2 arguments, dialog window title & the text inside the window
 
   code:
    ```py

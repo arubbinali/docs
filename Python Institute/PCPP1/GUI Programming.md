@@ -96,3 +96,6 @@
       button.place(x=10, y=10)
       skylight.mainloop()
       ```
+
+.
+7)

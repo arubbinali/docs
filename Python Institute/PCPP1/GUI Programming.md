@@ -213,3 +213,51 @@
           button_3.pack()
           window.mainloop()
          ```
+
+7) Coloring widgets
+        arguments: bg, fg, activeforeground, activebackground
+   - last 2 are for when the button is pressed and not yet released
+                
+        Hex codes
+            - #000000 is black
+            - #FFFFFF is white
+            - #FF0000 is red
+            - #00FF00 is green
+            - #0000FF is blue
+            - #00FFFF is turquoise
+            - #FF00FF is violet
+             ...
+
+     code:
+     ```py
+         import tkinter as tk
+
+         window = tk.Tk()
+         button = tk.Button(window, text="Button #1", bg="red", fg="yellow")
+         button.pack()
+         window.mainloop()
+     ```
+     ```py
+      import tkinter as tk
+
+      window = tk.Tk()
+      button = tk.Button(window, text="Button #1",
+                      bg="MediumPurple",
+                      fg="LightSalmon",
+                      activeforeground="LavenderBlush",
+                      activebackground="HotPink")
+      button.pack()
+      window.mainloop()
+     ```
+     ```py
+      import tkinter as tk
+
+      window = tk.Tk()
+      button = tk.Button(window, text="Button #1",
+                      bg="#9370DB",
+                      fg="#FFA07A",
+                      activeforeground="#FFF0F5",
+                      activebackground="#FF69B4")
+      button.pack()
+      window.mainloop()
+     ```

@@ -105,7 +105,7 @@
        1\. place:
        
          - parameters: h, w, x, y
-         -    h & w - height and width, f the parameters are omitted, the widget's height & width will be determined automatically
+         -    h & w - height and width, if the parameters are omitted, the widget's height & width will be determined automatically
          -    x - the widget's top-left pixel's horizontal coordinate measured relative to the home window's top-left corner
          -    y - the widget's top-left pixel's vertical coordinate measured relative to the home window's top-left corner
          

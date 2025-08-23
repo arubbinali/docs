@@ -98,46 +98,42 @@
       ```
 
 6)  Gemoetry managers - place, grid & pack
-    place - user decides where the widget goes by mentioning the x and y coordinates
-    grid - gives you a chance to express your general wishes and tries to deploy the widgets according to them
-           they aren't as precise as the ones used by place, but are far more detailed than those utilized by pack
-    pack - tries and finds the best possible location for each widget
-
-        these managers cannot be mixed. Only one of them can be used in one application
-
-        place:
-
-            parameters: h, w, x, y
-                h & w - height and width, f the parameters are omitted, the widget's height & width will be determined automatically
-                x - the widget's top-left pixel's horizontal coordinate measured relative to the home window's top-left corner
-                y - the widget's top-left pixel's vertical coordinate measured relative to the home window's top-left corner
-
-            code:
-
-                import tkinter as tk
-
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.place(x=10, y=10)
-                button_2.place(x=20, y=40)
-                button_3.place(x=30, y=70)
-                window.mainloop()
-
-            code:
-
-                import tkinter as tk
-
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.place(x=10, y=10, width=150)
-                button_2.place(x=20, y=40)
-                button_3.place(x=30, y=70, height=50)
-                window.mainloop()
-
+    - place - user decides where the widget goes by mentioning the x and y coordinates
+    - grid - gives you a chance to express your general wishes and tries to deploy the widgets according to them, they aren't as precise as the ones used by place, but are far more detailed than those utilized by pack
+    - pack - tries and finds the best possible location for each widget, these managers cannot be mixed. Only one of them can be used in one application
+    
+       1\. place:
+       
+         - parameters: h, w, x, y
+         -    h & w - height and width, f the parameters are omitted, the widget's height & width will be determined automatically
+         -    x - the widget's top-left pixel's horizontal coordinate measured relative to the home window's top-left corner
+         -    y - the widget's top-left pixel's vertical coordinate measured relative to the home window's top-left corner
+         
+         code:
+         ```py
+         import tkinter as tk
+         
+         window = tk.Tk()
+         button_1 = tk.Button(window, text="Button #1")
+         button_2 = tk.Button(window, text="Button #2")
+         button_3 = tk.Button(window, text="Button #3")
+         button_1.place(x=10, y=10)
+         button_2.place(x=20, y=40)
+         button_3.place(x=30, y=70)
+         window.mainloop()
+         ```
+         ```py
+         import tkinter as tk
+         
+         window = tk.Tk()
+         button_1 = tk.Button(window, text="Button #1")
+         button_2 = tk.Button(window, text="Button #2")
+         button_3 = tk.Button(window, text="Button #3")
+         button_1.place(x=10, y=10, width=150)
+         button_2.place(x=20, y=40)
+         button_3.place(x=30, y=70, height=50)
+         window.mainloop()
+         ```
         grid:
 
             paramters: column, row, rowspan, columnspan

@@ -134,82 +134,82 @@
          button_3.place(x=30, y=70, height=50)
          window.mainloop()
          ```
-        grid:
 
-            paramters: column, row, rowspan, columnspan
-                column=c - deploys the widget in the column number c; note: the columns' numbers start from zero, and if you omit this argument, the manager will assume 0 (the left-most column)
-                row=r - deploys the widget in the row number r; if you omit this argument, the manager will assume the first free row starting from the top
-                columnspan=cs - determines how many neighboring columns the widget occupies; the parameter defaults to 1 (the widget won't cross a single grid's cell)
-                rowspan=rs - works as columnspan but refers to rows
+         2\. grid:
+
+         paramters: column, row, rowspan, columnspan
+
+       - column=c - deploys the widget in the column number c; note: the columns' numbers start from zero, and if you omit this argument, the manager will assume 0 (the left-most column)
+       - row=r - deploys the widget in the row number r; if you omit this argument, the manager will assume the first free row starting from the top
+       - columnspan=cs - determines how many neighboring columns the widget occupies; the parameter defaults to 1 (the widget won't cross a single grid's cell)
+       - rowspan=rs - works as columnspan but refers to rows
                 
-            code:
-                
-                import tkinter as tk
+          code:
+            ```py
+             import tkinter as tk
 
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.grid(row=0, column=0)
-                button_2.grid(row=1, column=1)
-                button_3.grid(row=2, column=2)
-                window.mainloop()
+             window = tk.Tk()
+             button_1 = tk.Button(window, text="Button #1")
+             button_2 = tk.Button(window, text="Button #2")
+             button_3 = tk.Button(window, text="Button #3")
+             button_1.grid(row=0, column=0)
+             button_2.grid(row=1, column=1)
+             button_3.grid(row=2, column=2)
+             window.mainloop()
+            ```
+            ```py
+             import tkinter as tk
 
-            code:
+             window = tk.Tk()
+             button_1 = tk.Button(window, text="Button #1")
+             button_2 = tk.Button(window, text="Button #2")
+             button_3 = tk.Button(window, text="Button #3")
+             button_1.grid(row=0, column=0)
+             button_2.grid(row=1, column=1)
+             button_3.grid(row=2, column=0, columnspan=2)
+             window.mainloop()
+            ```
 
-                import tkinter as tk
+        3\. pack:
 
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.grid(row=0, column=0)
-                button_2.grid(row=1, column=1)
-                button_3.grid(row=2, column=0, columnspan=2)
-                window.mainloop()
+         parameters: (side: TOP, BOTTOM, LEFT, RIGHT), (fill: NONE, X, Y, BOTH)
+       - side=s - forces the manager to pack the widgets in a specified direction
+       - fill=f - suggests to the manager how to expand the widget if you want it to occupy more space than the default
+             
+         code:
+         ```py
+          import tkinter as tk
 
-        pack:
+          window = tk.Tk()
+          button_1 = tk.Button(window, text="Button #1")
+          button_2 = tk.Button(window, text="Button #2")
+          button_3 = tk.Button(window, text="Button #3")
+          button_1.pack()
+          button_2.pack()
+          button_3.pack()
+          window.mainloop()
+         ```
+         ```py
+          import tkinter as tk
 
-            parameters: (side: TOP, BOTTOM, LEFT, RIGHT), (fill: NONE, X, Y, BOTH)
-                side=s - forces the manager to pack the widgets in a specified direction
-                fill=f - suggests to the manager how to expand the widget if you want it to occupy more space than the default
-                
-            code:
+          window = tk.Tk()
+          button_1 = tk.Button(window, text="Button #1")
+          button_2 = tk.Button(window, text="Button #2")
+          button_3 = tk.Button(window, text="Button #3")
+          button_1.pack(side=tk.RIGHT)
+          button_2.pack()
+          button_3.pack()
+          window.mainloop()
+         ```
+         ```py
+          import tkinter as tk
 
-                import tkinter as tk
-
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.pack()
-                button_2.pack()
-                button_3.pack()
-                window.mainloop()
-
-            code:
-
-                import tkinter as tk
-
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.pack(side=tk.RIGHT)
-                button_2.pack()
-                button_3.pack()
-                window.mainloop()
-
-            code:
-
-                import tkinter as tk
-
-                window = tk.Tk()
-                button_1 = tk.Button(window, text="Button #1")
-                button_2 = tk.Button(window, text="Button #2")
-                button_3 = tk.Button(window, text="Button #3")
-                button_1.pack(side=tk.RIGHT, fill=tk.Y)
-                button_2.pack()
-                button_3.pack()
-                window.mainloop()
-
+          window = tk.Tk()
+          button_1 = tk.Button(window, text="Button #1")
+          button_2 = tk.Button(window, text="Button #2")
+          button_3 = tk.Button(window, text="Button #3")
+          button_1.pack(side=tk.RIGHT, fill=tk.Y)
+          button_2.pack()
+          button_3.pack()
+          window.mainloop()
+         ```

@@ -349,3 +349,89 @@
           window.mainloop()
           ```
      7) Checkbutton()
+        
+        code:
+        ```py
+        import tkinter as tk
+
+         win = tk.Tk()
+         
+         label = tk.Label(win, text="Little label:")
+         label.pack()
+         
+         frame = tk.Frame(win, height=30, width=100, bg="#000099")
+         frame.pack()
+         
+         button = tk.Button(win, text="Button")
+         button.pack(fill=tk.X)
+         
+         switch = tk.IntVar()
+         switch.set(1)
+         
+         checkbutton = tk.Checkbutton(win, text="Check Button", variable=switch)
+         checkbutton.pack()
+         
+         win.mainloop()
+         ```
+    8) Entry()
+       code:
+         ```py
+         import tkinter as tk
+      
+         window = tk.Tk()
+         
+         label = tk.Label(window, text="Little label:")
+         label.pack()
+         
+         frame = tk.Frame(window, height=30, width=100, bg="#000099")
+         frame.pack()
+         
+         button = tk.Button(window, text="Button")
+         button.pack(fill=tk.X)
+         
+         switch = tk.IntVar()
+         switch.set(1)
+         
+         checkbutton = tk.Checkbutton(window, text="Check Button", variable=switch)
+         checkbutton.pack()
+         
+         entry = tk.Entry(window, width=10)
+         entry.pack()
+         
+         window.mainloop()
+         ```
+  
+    9) Radiobutton()
+        - always work in groups and only one of the widgets inside the group can be checked
+       code:
+         ```py
+         import tkinter as tk
+         
+         window = tk.Tk()
+         
+         label = tk.Label(window, text="Little label:")
+         label.pack()
+         
+         frame = tk.Frame(window, height=30, width=100, bg="#000099")
+         frame.pack()
+         
+         button = tk.Button(window, text ="Button")
+         button.pack(fill=tk.X)
+         
+         switch = tk.IntVar()
+         switch.set(1)
+         
+         checkbutton = tk.Checkbutton(window, text="Check Button", variable=switch)
+         checkbutton.pack()
+         
+         entry = tk.Entry(window, width=30)
+         entry.pack()
+         
+         radiobutton_1 = tk.Radiobutton(window, text="Steak", variable=switch, value=0)
+         radiobutton_1.pack()
+         radiobutton_2 = tk.Radiobutton(window, text="Salad", variable=switch, value=1)
+         radiobutton_2.pack()
+         
+         window.mainloop()
+         ```
+    11) 

@@ -474,6 +474,14 @@
       window.mainloop()
       ```
 
+   - `bind()` takes 2 arguments
+   - `widget.bind(event, callback)`
+  
+     code:
+     ```py
+     
+     ```
+
 
 
 

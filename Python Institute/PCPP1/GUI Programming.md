@@ -145,30 +145,30 @@
        - rowspan=rs - works as columnspan but refers to rows
                 
           code:
-            ```py
-             import tkinter as tk
+          ```py
+          import tkinter as tk
 
-             window = tk.Tk()
-             button_1 = tk.Button(window, text="Button #1")
-             button_2 = tk.Button(window, text="Button #2")
-             button_3 = tk.Button(window, text="Button #3")
-             button_1.grid(row=0, column=0)
-             button_2.grid(row=1, column=1)
-             button_3.grid(row=2, column=2)
-             window.mainloop()
-            ```
-            ```py
-             import tkinter as tk
+          window = tk.Tk()
+          button_1 = tk.Button(window, text="Button #1")
+          button_2 = tk.Button(window, text="Button #2")
+          button_3 = tk.Button(window, text="Button #3")
+          button_1.grid(row=0, column=0)
+          button_2.grid(row=1, column=1)
+          button_3.grid(row=2, column=2)
+          window.mainloop()
+          ```
+          ```py
+          import tkinter as tk
 
-             window = tk.Tk()
-             button_1 = tk.Button(window, text="Button #1")
-             button_2 = tk.Button(window, text="Button #2")
-             button_3 = tk.Button(window, text="Button #3")
-             button_1.grid(row=0, column=0)
-             button_2.grid(row=1, column=1)
-             button_3.grid(row=2, column=0, columnspan=2)
-             window.mainloop()
-            ```
+          window = tk.Tk()
+          button_1 = tk.Button(window, text="Button #1")
+          button_2 = tk.Button(window, text="Button #2")
+          button_3 = tk.Button(window, text="Button #3")
+          button_1.grid(row=0, column=0)
+          button_2.grid(row=1, column=1)
+          button_3.grid(row=2, column=0, columnspan=2)
+          window.mainloop()
+          ```
 
         3\. pack:
 
@@ -177,7 +177,7 @@
        - fill=f - suggests to the manager how to expand the widget if you want it to occupy more space than the default
              
          code:
-         ```py
+          ```py
           import tkinter as tk
 
           window = tk.Tk()
@@ -188,8 +188,8 @@
           button_2.pack()
           button_3.pack()
           window.mainloop()
-         ```
-         ```py
+          ```
+          ```py
           import tkinter as tk
 
           window = tk.Tk()
@@ -200,8 +200,8 @@
           button_2.pack()
           button_3.pack()
           window.mainloop()
-         ```
-         ```py
+          ```
+          ```py
           import tkinter as tk
 
           window = tk.Tk()
@@ -212,7 +212,7 @@
           button_2.pack()
           button_3.pack()
           window.mainloop()
-         ```
+          ```
 
 7) Coloring widgets
         arguments: bg, fg, activeforeground, activebackground
@@ -229,15 +229,15 @@
        ...
 
      code:
-     ```py
+      ```py
       import tkinter as tk
 
       window = tk.Tk()
       button = tk.Button(window, text="Button #1", bg="red", fg="yellow")
       button.pack()
       window.mainloop()
-     ```
-     ```py
+      ```
+      ```py
       import tkinter as tk
 
       window = tk.Tk()
@@ -248,8 +248,8 @@
                       activebackground="HotPink")
       button.pack()
       window.mainloop()
-     ```
-     ```py
+      ```
+      ```py
       import tkinter as tk
 
       window = tk.Tk()
@@ -260,24 +260,24 @@
                       activebackground="#FF69B4")
       button.pack()
       window.mainloop()
-     ```
+      ```
 
 8) A GUI application from scratch
      1) construct a window and launch an event controller
 
          code:
-         ```py
+          ```py
           import tkinter as tk
    
           window = tk.Tk()
           window.mainloop()
-         ```   
+          ```   
 
      2) Label()
          - a non-clickable widget able to present short textual information, passed to the widget's constructor using a text argument
      
          code:
-         ```py
+        ```py
         import tkinter as tk
    
         window = tk.Tk()
@@ -286,13 +286,13 @@
         label.pack()
    
         window.mainloop()
-         ```
+        ```
 
      3) Frame()
          - a non-clickable component used to group widgets and to separate them (visually) from other window components
              
          code:
-        ```py
+          ```py
           import tkinter as tk
    
           window = tk.Tk()
@@ -304,12 +304,12 @@
           frame.pack()
    
           window.mainloop()
-        ```
+          ```
       
      5) Button()
 
          code:
-         ```py
+          ```py
           import tkinter as tk
 
           window = tk.Tk()
@@ -324,12 +324,12 @@
           button.pack(fill=tk.X)
 
           window.mainloop()
-         ```
+          ```
      6) IntVar() & set()
          - create an object of the class `IntVar` and use the class method `set` to store an integer value
      
          code:
-         ```py
+          ```py
           import tkinter as tk
 
           window = tk.Tk()
@@ -347,5 +347,5 @@
           switch.set(1)
 
           window.mainloop()
-         ```
+          ```
      7) Checkbutton()

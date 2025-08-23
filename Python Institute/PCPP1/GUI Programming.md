@@ -218,24 +218,24 @@
         arguments: bg, fg, activeforeground, activebackground
    - last 2 are for when the button is pressed and not yet released
                 
-        Hex codes
-            - #000000 is black
-            - #FFFFFF is white
-            - #FF0000 is red
-            - #00FF00 is green
-            - #0000FF is blue
-            - #00FFFF is turquoise
-            - #FF00FF is violet
-             ...
+     Hex codes
+      - #000000 is black
+      - #FFFFFF is white
+      - #FF0000 is red
+      - #00FF00 is green
+      - #0000FF is blue
+      - #00FFFF is turquoise
+      - #FF00FF is violet
+       ...
 
      code:
      ```py
-         import tkinter as tk
+      import tkinter as tk
 
-         window = tk.Tk()
-         button = tk.Button(window, text="Button #1", bg="red", fg="yellow")
-         button.pack()
-         window.mainloop()
+      window = tk.Tk()
+      button = tk.Button(window, text="Button #1", bg="red", fg="yellow")
+      button.pack()
+      window.mainloop()
      ```
      ```py
       import tkinter as tk
@@ -261,3 +261,91 @@
       button.pack()
       window.mainloop()
      ```
+
+8) A GUI application from scratch
+     1) construct a window and launch an event controller
+
+         code:
+         ```py
+          import tkinter as tk
+   
+          window = tk.Tk()
+          window.mainloop()
+         ```   
+
+     2) Label()
+         - a non-clickable widget able to present short textual information, passed to the widget's constructor using a text argument
+     
+         code:
+         ```py
+        import tkinter as tk
+   
+        window = tk.Tk()
+   
+        label = tk.Label(window, text = "Little label:")
+        label.pack()
+   
+        window.mainloop()
+         ```
+
+     3) Frame()
+         - a non-clickable component used to group widgets and to separate them (visually) from other window components
+             
+         code:
+        ```py
+          import tkinter as tk
+   
+          window = tk.Tk()
+   
+          label = tk.Label(window, text="Little label:")
+          label.pack()
+   
+          frame = tk.Frame(window, height=30, width=100, bg="#000099")
+          frame.pack()
+   
+          window.mainloop()
+        ```
+      
+     5) Button()
+
+         code:
+         ```py
+          import tkinter as tk
+
+          window = tk.Tk()
+
+          label = tk.Label(window, text="Little label:")
+          label.pack()
+
+          frame = tk.Frame(window, height=30, width=100, bg="#000099")
+          frame.pack()
+
+          button = tk.Button(window, text="Button")
+          button.pack(fill=tk.X)
+
+          window.mainloop()
+         ```
+     6) IntVar() & set()
+         - create an object of the class `IntVar` and use the class method `set` to store an integer value
+     
+         code:
+         ```py
+          import tkinter as tk
+
+          window = tk.Tk()
+
+          label = tk.Label(window, text="Little label:")
+          label.pack()
+
+          frame = tk.Frame(window, height=30, width=100, bg="#000099")
+          frame.pack()
+
+          button = tk.Button(window, text="Button")
+          button.pack(fill=tk.X)
+
+          switch = tk.IntVar()
+          switch.set(1)
+
+          window.mainloop()
+         ```
+     7) Checkbutton()

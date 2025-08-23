@@ -306,7 +306,7 @@
           window.mainloop()
           ```
       
-     5) Button()
+     4) Button()
 
          code:
           ```py
@@ -325,7 +325,7 @@
 
           window.mainloop()
           ```
-     6) IntVar() & set()
+     5) IntVar() & set()
          - create an object of the class `IntVar` and use the class method `set` to store an integer value
      
          code:
@@ -348,7 +348,7 @@
 
           window.mainloop()
           ```
-     7) Checkbutton()
+     6) Checkbutton()
         
         code:
         ```py
@@ -373,7 +373,7 @@
          
          win.mainloop()
          ```
-    8) Entry()
+    7) Entry()
        code:
          ```py
          import tkinter as tk
@@ -401,7 +401,7 @@
          window.mainloop()
          ```
   
-    9) Radiobutton()
+    8) Radiobutton()
         - always work in groups and only one of the widgets inside the group can be checked
        code:
          ```py
@@ -434,4 +434,4 @@
          
          window.mainloop()
          ```
-    11) 
+   

@@ -626,9 +626,74 @@
       window.bind_all("<Button-1>", hello)
       window.mainloop()
       ```
-   
 
+10) Widget properties
 
+   - Using dictionaries
+   - Assuming that a widget named `Widget` has a property named `prop` and you want to read its value and then set it with a new value, you can do this in the following way:
+   - `old_val = Widget["prop"]`
+   - `Widget["prop"] = new_val`
+
+     code:
+      ```py
+      import tkinter as tk
+
+      def on_off():
+          global button
+          state = button["text"]
+          if state == "ON":
+              state = "OFF"
+          else:
+              state = "ON"
+          button["text"] = state
+      
+      window = tk.Tk()
+      button = tk.Button(window, text="OFF", command=on_off)
+      button.place(x=50, y=100, width=100)
+      window.mainloop()
+      ```
+   - Using `cget()` to read a propertys value and `config()` to set a value for one
+     code:
+      ```py
+      import tkinter as tk
+      
+      def on_off():
+          global button
+          state = button.cget("text")
+          if state == "ON":
+              state = "OFF"
+          else:
+              state = "ON"
+          button.config(text=state)
+      
+      window = tk.Tk()
+      button = tk.Button(window, text="OFF", command=on_off)
+      button.place(x=50, y=100, width=100)
+      window.mainloop()
+      ```
+   - Fonts (`font`)
+   - Any font can be described as two- or three-element tuples:
+   - `("font_family_name", "font_size")`
+   - `("font_family_name", "font_size", "font_style")`
+   - Third parameter can be one of:
+     - "bold"
+     - "italic"
+     - "underline"
+     - "overstrike"
+
+     code:
+      ```py
+      import tkinter as tk
+      
+      window = tk.Tk()
+      label_1 = tk.Label(window, text="Quick brown fox jumps over the lazy dog")
+      label_1.grid(column=0, row=0)
+      label_2 = tk.Label(window, text="Quick brown fox jumps over the lazy dog", font=("Times", "12"))
+      label_2.grid(column=0, row=1)
+      label_3 = tk.Label(window, text="Quick brown fox jumps over the lazy dog", font=("Arial", "16", "bold"))
+      label_3.grid(column=0, row=2)
+      window.mainloop()
+      ```
 
 
 

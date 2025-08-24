@@ -696,6 +696,46 @@
       ```
 
 
+     <img width="964" height="477" alt="image" src="https://github.com/user-attachments/assets/4e6d60b2-4aab-4ac7-ab68-08fe57e462f7" />
+
+     code:
+      ```py
+      import tkinter as tk
+
+      window = tk.Tk()
+      button_1 = tk.Button(window, text="Ordinary button");
+      button_1.pack()
+      button_2 = tk.Button(window, text="Exceptional button")
+      button_2.pack()
+      button_2["borderwidth"] = 10
+      button_2["highlightthickness"] = 10
+      button_2["padx"] = 10
+      button_2["pady"] = 5
+      button_2["underline"] = 1
+      window.mainloop()
+      ```
+
+     <img width="742" height="374" alt="image" src="https://github.com/user-attachments/assets/b65936b8-02d7-4ec9-a454-678d58bb44bf" />
+
+     code:
+      ```py
+      import tkinter as tk
+
+      window = tk.Tk()
+      button_1 = tk.Button(window, text="Ordinary button");
+      button_1.pack()
+      button_2 = tk.Button(window, text="Colorful button")
+      button_2.pack()
+      button_2.config(bg ="#000000")
+      button_2.config(fg ="yellow")
+      button_2.config(activeforeground ="#FF0000")
+      button_2.config(activebackground ="green")
+      window.mainloop()
+      ```
+
+
+
+
 
 
 

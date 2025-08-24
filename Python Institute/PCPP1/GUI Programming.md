@@ -733,6 +733,47 @@
       window.mainloop()
       ```
 
+   - Anchors (`anchor`), an imaginary (invisible) point inside the widget to which the text (if any) is anchored
+
+     <img width="746" height="559" alt="image" src="https://github.com/user-attachments/assets/45ea3816-d50a-4004-9484-20beda85e065" />
+
+     code:
+      ```py
+      import tkinter as tk
+
+      window = tk.Tk()
+      button_1 = tk.Button(window, text="Regular button");
+      button_1["anchor"] = E
+      button_1["width"] = 20  # pixels!
+      button_1.pack()
+      button_2 = tk.Button(window, text="Another button")
+      button_2["anchor"] = SW
+      button_2["width"] = 20
+      button_2["height"] = 3  # rows
+      button_2.pack()
+      window.mainloop()
+      ```
+
+      Output (since the anchor chars like E or SW are not identified):
+      <img width="275" height="201" alt="image" src="https://github.com/user-attachments/assets/484246fb-77f4-49ce-9acb-594ec70c1b5e" />
+
+   - Cursors (the `cursor` property)
+     code:
+      ```py
+      import tkinter as tk
+      
+      window = tk.Tk()
+      label_1 = tk.Label(window, height=3, text="arrow", cursor="arrow")
+      label_1.pack()
+      label_2 = tk.Label(window, height=3, text="clock", cursor="clock")
+      label_2.pack()
+      label_3 = tk.Label(window, height=3, text="heart", cursor="heart")
+      label_3.pack()
+      window.mainloop()
+      ```
+
+     
+
 
 
 

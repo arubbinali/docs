@@ -880,7 +880,21 @@
       - `DoubleVar` --> Float `0.0`
       - `IntVar` --> Integer `0`
       - `StringVar` String `""`
-   
+   - Initializing variables, setting and getting values (`set()` & `get()` methods)
+      - Initialize a string for example by: `s = StringVar()`
+      - Set a value to it using the `set()` method: `s.set("I box and ball")`
+      - Get the value using the `get()` method: `value = s.get()`
+    
+      code:
+      ```py
+      import tkinter as tk
+      
+      window = tk.Tk()
+      a_string = tk.IntVar()
+      a_string.set(4)
+      print(a_string.get())
+      ```
+      
 
 
 

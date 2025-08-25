@@ -797,6 +797,32 @@
       frame.pack()
       window.mainloop()
       ```
+
+   - The `destroy()` method
+   - Works recursively destroying the widget, erasing it from the event manager and destroying the widgets children
+
+     code:
+      ```py
+      import tkinter as tk
+      
+      def blink():
+          global is_white
+          if is_white:
+              color = 'black'
+          else:
+              color = 'white'
+          is_white = not is_white
+          frame.config(bg=color)
+          frame.after(500, blink)
+      
+      is_white = True
+      window = tk.Tk()
+      frame = tk.Frame(window, width=200, height=100, bg='white')
+      frame.after(500, blink)
+      frame.pack()
+      window.mainloop()
+      ```
+     
      
 
 

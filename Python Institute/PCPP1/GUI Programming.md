@@ -868,7 +868,19 @@
       window.mainloop()
       ```
 
+11) Variables
 
+   - Observable variables
+      - such a var is an object of the container class
+      - any change of the variable’s state can be observed by a number of external agents
+      - typed variables, be aware of what type of value you want to store in them, and don’t change your mind during the variable’s life
+      - you can only create an observable variable after the main window initialization
+   - The 4 types of observable variables and they are initially set to:
+      - `BooleanVar` --> Boolean `False`
+      - `DoubleVar` --> Float `0.0`
+      - `IntVar` --> Integer `0`
+      - `StringVar` String `""`
+   
 
 
 

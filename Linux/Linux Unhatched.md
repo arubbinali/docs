@@ -19,4 +19,20 @@ Options can be used to alter the behavior of a command.
 
 - `-r` (`ls -r`) → `r` stands for "reverse", prints the results in reverse alphabetical order
 
-- 
+- Multiple options can be used at once, either given as separate options as in `-l -r` or combined like `-lr`. The output of all of these examples would be the same:
+
+    - `ls -l -r`
+    - `ls -rl`
+    - `ls -lr`
+
+- `-v` → `v` stands for verbose
+
+    - `aptitude moo` outputs "There are no Easter Eggs in this program."
+    - `aptitude -v moo` outputs "There really are no Easter Eggs in this program."
+    - `aptitude -vv moo` outputs "Didn't I already tell you that there are no Easter Eggs in this program?"
+    - `aptitude -vvv moo` outputs "Stop it!"
+
+    Multiple options can be denoted separately or combined:
+
+    - `aptitude -v -v moo`
+    - `aptitude -vv moo`

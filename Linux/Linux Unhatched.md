@@ -36,3 +36,11 @@ Options can be used to alter the behavior of a command.
 
     - `aptitude -v -v moo`
     - `aptitude -vv moo`
+
+### 4. Printing Working Directory
+
+- `pwd` prints the current working directory
+
+### 5. Changing Directories
+
+- `cd` change directory to 

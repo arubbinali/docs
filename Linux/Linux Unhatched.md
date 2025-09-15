@@ -78,3 +78,75 @@ Options can be used to alter the behavior of a command.
 > Syntax:  ls [OPTIONS] [FILE]
 
 - By default, when the `ls` command is used with no options or arguments, it will list the files in the current directory
+- File Types
+    
+    - `-`rw-r--r-- 1 root   root  18047 Dec 20  2017 alternatives.log       
+    - `d`rwxr-x--- 2 root   adm    4096 Dec 20  2017 apache2 
+
+    | Symbol | File Type      | Description                                                   |
+    |--------|----------------|---------------------------------------------------------------|
+    | d      | directory      | A file used to store other files.                             |
+    | -      | regular file   | Includes readable files, images files, binary files, and compressed files. |
+    | l      | symbolic link  | Points to another file.                                       |
+    | s      | socket         | Allows for communication between processes.                   |
+    | p      | pipe           | Allows for communication between processes.                   |
+    | b      | block file     | Used to communicate with hardware.                            |
+    | c      | character file | Used to communicate with hardware.                            |
+
+- Permissions
+
+    - Permissions indicate how certain users can access a file
+    - d`rwxr-xr-x` 2 root   root   4096 Apr 11  2014 upstart
+
+- Hard Link Count
+
+    - Indicates how many hard links point to this file
+    - -rw-r----- `1` syslog adm    1346 Oct  2 22:17 auth.log
+
+- User Owner
+
+    - User syslog owns this file, every time a file is created, the ownership is automatically assigned to the user who created it
+    - -rw-r----- 1 `syslog` adm     106 Oct  2 19:57 kern.log
+
+- Group Owner
+
+    - Indicates which group owns this file
+    - -rw-rw-r-- 1 root   `utmp` 292584 Oct  2 19:57 lastlog
+
+- File Size
+    
+    - Directories and larger files may be shown in kilobytes since displaying their size in bytes would present a very large number. Therefore, in the case of a directory, it might actually be a multiple of the block size used for the file system. Block size is the size of a series of data stored in the filesystem.
+    - -rw-r----- 1 syslog adm   `19573` Oct  2 22:57 syslog
+
+- Timestamp
+
+    - Indicates the time that the file's contents were last modified
+    - drwxr-xr-x 2 root   root   4096 `Dec  7  2017` fsck
+
+- Filename
+
+    - The final field contains the name of the file or directory
+    - -rw-r--r-- 1 root   root  47816 Dec  7  2017 `bootstrap.log`
+
+- Symbolic Links
+
+    - In the case of symbolic links, a file that points to another file, the link name will be displayed along with an arrow and the pathname of the original file
+    - lrwxrwxrwx. 1 root root 22 Nov 6 2012 /etc/grub.conf `->` ../boot/grub/grub.conf
+
+- Sorting
+
+    - By default the output of the ls command is sorted alphabetically by filename. It can sort by other methods as well
+    - `-t` (`ls -lt`) → sorts the files by timestamp
+    - `-S` (`ls -lS`) → sorts the files by file size
+    - `-r` (`ls -lr`) → reverses the order of any type of sort:
+        
+        - `ls -ltr`/`ls -l -t -r` → the order of timestamps switches from newest-first to oldest-first
+        - `ls -lSr`/`ls -l -S -r` → the numbers in file size field switch from descending to ascending
+        - Used alone the `-r` option with list the files in reverse alphabetical order 
+
+### 7. Administrative Access
+
+- `su`
+    
+    - > Syntax: su OPTIONS USERNAME
+    

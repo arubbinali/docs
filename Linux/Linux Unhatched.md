@@ -5,6 +5,8 @@
 
 ### 2. Arguments
 
+> Syntax: command [options…] **[arguments…]**
+
 An argument can be used to specify something for the command to act upon.
 
 - `ls Documents` →  the `Documents` directory will be used as an argument to list the contents of that directory
@@ -12,6 +14,8 @@ An argument can be used to specify something for the command to act upon.
 - `aptitude` → takes `moo` as an argument: `aptitude moo` outputs "There are no Easter Eggs in this program."
 
 ### 3. Options
+
+> Syntax: command **[options…]** [arguments…]
 
 Options can be used to alter the behavior of a command.
 
@@ -39,8 +43,13 @@ Options can be used to alter the behavior of a command.
 
 ### 4. Printing Working Directory
 
+> Syntax: pwd [OPTIONS]
+
 - `pwd` prints the current working directory
 
 ### 5. Changing Directories
 
+> Syntax: cd [options] [path]
+
 - `cd` change directory to 
+

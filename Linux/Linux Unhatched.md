@@ -73,3 +73,8 @@ Options can be used to alter the behavior of a command.
     - `.` → Always represents the current directory
     - `~` → Refers to the home directory of the current user
 
+### 6. Listing Files
+
+> Syntax:  ls [OPTIONS] [FILE]
+
+- By default, when the `ls` command is used with no options or arguments, it will list the files in the current directory

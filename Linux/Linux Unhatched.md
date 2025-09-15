@@ -165,3 +165,11 @@ Options can be used to alter the behavior of a command.
 
 ### 8. Permissions
 
+- After the file type character, the permissions are displayed. The permissions are broken into three sets of three characters:
+
+    - Owner
+        - -`rw-`r--r-- 1 sysadmin sysadmin 647 Dec 20  2017 hello.sh
+
+    - Group
+    
+    - Other

@@ -51,5 +51,25 @@ Options can be used to alter the behavior of a command.
 
 > Syntax: cd [options] [path]
 
-- `cd` change directory to 
+- `cd` changes directory to the the given path
+- `root` is the top level directory and `/` given as an argument refers to it
+    
+    - e.g. `cd /`, this will change the directoy to the root directory
+
+- Absolute paths
+
+    - Start at the root of the filesystem
+    - Path always starts from the root directory (`/`)
+
+- Relative paths
+
+    - Start from your current location
+    - Path starts directly from the name of the directory
+
+
+- Shortcuts
+
+    - `..` → Regardless of current directory, `..` always represents one directory higher relative to the current directory, sometimes referred to as the parent directory
+    - `.` → Always represents the current directory
+    - `~` → Refers to the home directory of the current user
 

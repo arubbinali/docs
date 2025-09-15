@@ -149,4 +149,19 @@ Options can be used to alter the behavior of a command.
 - `su`
     
     - > Syntax: su OPTIONS USERNAME
-    
+    - Allows you to temporarily act as a different user. It does this by creating a new shell. The shell is simply a text input console that lets you type in commands
+    - By default, if a user account is not specified, the su command will open a new shell as the root user, which provides administrative privileges
+    - The command can be used in 3 ways:
+        - su -
+        - su -l
+        - su --login 
+    - To logout, use the `exit` command
+
+- `sudo`
+
+    - > Syntax: sudo [OPTIONS] COMMAND
+    -  Allows a user to execute a command as another user without creating a new shell. Instead, to execute a command with administrative privileges, use it as an argument to the sudo command. Like the su command, the sudo command assumes by default the root user account should be used to execute commands
+    - The `sudo` command can be used to switch to other user accounts as well. To specify a different user account use the `-u` option
+
+### 8. Permissions
+

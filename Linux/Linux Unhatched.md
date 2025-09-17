@@ -168,8 +168,67 @@ Options can be used to alter the behavior of a command.
 - After the file type character, the permissions are displayed. The permissions are broken into three sets of three characters:
 
     - Owner
+        - The first set is for the user who owns the file. If your current account is the user owner of the file, then the first set of the three permissions will apply and the other permissions have no effect.
         - -`rw-`r--r-- 1 sysadmin sysadmin 647 Dec 20  2017 hello.sh
+        - The user who owns the file, and who these permissions apply to, can be determined by the user owner field:
+        - -rw-r--r-- 1 `sysadmin` sysadmin 647 Dec 20  2017 hello.sh
 
     - Group
-    
+        - The second set is for the group that owns the file. If your current account is not the user owner of the file and you are a member of the group that owns the file, then the group permissions will apply and the other permissions have no effect.
+        - -rw-`r--`r-- 1 sysadmin sysadmin 647 Dec 20  2017 hello.sh
+        - The group for this file can be determined by the group owner field:
+        - -rw-r--r-- 1 sysadmin `sysadmin` 647 Dec 20  2017 hello.sh
+
     - Other
+        - The last set is for everyone else, any one who that first two sets of permissions do not apply to. If you are not the user who owns the file or a member of the group that owns the file, the third set of permissions applies to you.
+        - -rw-r--`r--` 1 sysadmin sysadmin 647 Dec 20  2017 hello.sh
+
+- Permission Types
+
+    | Permission | Effects on File                                                                 | Effects on Directory                                                                                  |
+    |------------|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+    | read (r) | Allows for file contents to be read or copied.                                   | Without execute permission on the directory, allows for a non-detailed listing of files. With execute permission, `ls -l` can provide a detailed listing. |
+    | write (w)| Allows for contents to be modified or overwritten. Allows for files to be added or removed from a directory. | For this permission to work, the directory must also have execute permission.                        |
+    | execute (x) | Allows for a file to be run as a process, although script files require read permission, as well. | Allows a user to change to the directory if parent directories have execute permission as well.      |
+
+### 9. Changing File Permissions (The Symbolic Method)
+
+- `chmod`
+- > Syntax: `chmod [<SET><ACTION><PERMISSIONS>]... FILE`
+
+1. `SET`
+    
+    Choose what **set** of permissions is being changed
+
+    | Symbol | Meaning |
+    |--------|---------|
+    | u      | User: The user who owns the file. |
+    | g      | Group: The group who owns the file. |
+    | o      | Others: Anyone other than the user owner or member of the group owner. |
+    | a      | All: Refers to the user, group and others. |
+
+2. `ACTION`
+
+    Next, specify an **action** symbol
+
+    | Symbol | Meaning |
+    |--------|---------|
+    | +      | Add the permission, if necessary |
+    | =      | Specify the exact permission |
+    | -      | Remove the permission, if necessary |
+
+3. `PERMISSIONS`
+
+    Last, specify one or more **permissions** to be acted upon
+
+    | Symbol | Meaning |
+    |--------|---------|
+    | r      | read    |
+    | w      | write   |
+    | x      | execute |
+
+4. `FILE`
+
+    Finally, a space and the pathnames for the files to assign those permissions
+
+    

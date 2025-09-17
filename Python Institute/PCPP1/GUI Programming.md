@@ -894,8 +894,58 @@
       a_string.set(4)
       print(a_string.get())
       ```
-      
-### 12. 
+### 12. Variable Observers (trace)
+
+- Tkinter variables (`StringVar`, `IntVar`, etc.) can have **observers** (callbacks) triggered on read, write, or delete.  
+- Add observer using `trace()`:
+
+    code:
+    
+    ```py
+    obsid = var.trace(mode, callback)
+    ```
+
+- **Mode options:**  
+    - `"r"` – read (`get()`)  
+    - `"w"` – write (`set()`)  
+    - `"u"` – delete (`del`)  
+
+- **Callback function:**  
+
+    code:
+    ```py
+    def callback(*args):
+        print("Triggered")
+    ```
+
+- Remove observer using `trace_vdelete()`:
+
+    code:
+    ```py
+    var.trace_vdelete(mode, obsid)
+    ```
+
+- **Example:**
+
+    code:
+
+    ```python
+    import tkinter as tk
+
+    var = tk.StringVar()
+    var.set("abc")
+
+    r_id = var.trace("r", lambda *a: print("Read"))
+    w_id = var.trace("w", lambda *a: print("Write"))
+
+    var.set(var.get() + "d")  # triggers write
+    var.trace_vdelete("r", r_id)
+    var.trace_vdelete("w", w_id)
+    ```
+
+-  Observers monitor variable changes automatically.
+
+ 
 
 
 

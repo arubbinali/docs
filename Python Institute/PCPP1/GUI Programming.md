@@ -1,8 +1,8 @@
 # Course 1: GUI Programming
 
-> ## Module 1
+## Module 1
 
-1) `Tk()` & `mainloop()`:
+### 1. `Tk()` & `mainloop()`:
    - The main application window (which is often the only window being used by the application) is created by the tkinter method named `Tk()`.
    - To start the controller, you have to invoke the main window's method, named `mainloop()`.
   
@@ -15,7 +15,7 @@
       skylight.mainloop()
       ```
 
-2) `title()`
+### 2. `title()`
    - to name window's title bar
    
      code:
@@ -28,7 +28,7 @@
       skylight.mainloop()
       ```
 
-3) `Button()` & `place()`
+### 3. `Button()` & `place()`
    - create a Button class object and place it inside the main window
    - first argument is obligatory (a reference to the target window), others are optional
    - the argument `text` displayts text on the button
@@ -48,7 +48,7 @@
       skylight.mainloop()
       ```
 
-4) Event handler
+### 4. Event handler
    - a piece of code responsible for responding to all clicks addressed to a button
    - this will only be invoked by the controller
   
@@ -72,7 +72,7 @@
       skylight.mainloop()
       ```
 
-5) `messagebox`, `askquestion()` & modal windows
+### 5. `messagebox`, `askquestion()` & modal windows
    - modal window --> a window which grabs the whole of the application's focus
    - messagebox creates dialog boxes intended to ask questions, display messages, and to receive a user's reply
    - the dialog box is an example of a modal window
@@ -97,7 +97,7 @@
       skylight.mainloop()
       ```
 
-6)  Gemoetry managers - place, grid & pack
+### 6.  Gemoetry managers - place, grid & pack
     - place - user decides where the widget goes by mentioning the x and y coordinates
     - grid - gives you a chance to express your general wishes and tries to deploy the widgets according to them, they aren't as precise as the ones used by place, but are far more detailed than those utilized by pack
     - pack - tries and finds the best possible location for each widget, these managers cannot be mixed. Only one of them can be used in one application
@@ -214,7 +214,7 @@
           window.mainloop()
           ```
 
-7) Coloring widgets
+### 7. Coloring widgets
         arguments: bg, fg, activeforeground, activebackground
    - last 2 are for when the button is pressed and not yet released
                 
@@ -262,7 +262,7 @@
       window.mainloop()
       ```
 
-8) A GUI application from scratch
+### 8. A GUI application from scratch
      1) construct a window and launch an event controller
 
          code:
@@ -435,7 +435,7 @@
          window.mainloop()
          ```
    
-9) Event handling
+### 9. Event handling
    - `showinfo()` from the messagebox module
    - takes 2 arguments, `messagebox.showinfo(title, info)`
   
@@ -627,7 +627,7 @@
       window.mainloop()
       ```
 
-10) Widget properties
+### 10. Widget properties
 
    - Using dictionaries
    - Assuming that a widget named `Widget` has a property named `prop` and you want to read its value and then set it with a new value, you can do this in the following way:
@@ -868,7 +868,7 @@
       window.mainloop()
       ```
 
-11) Variables
+### 11. Variables
 
    - Observable variables
       - such a var is an object of the container class
@@ -895,7 +895,7 @@
       print(a_string.get())
       ```
       
-12) 
+### 12. 
 
 
 

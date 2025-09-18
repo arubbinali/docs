@@ -932,37 +932,109 @@
     ```python
     import tkinter as tk
 
-    var = tk.StringVar()
-    var.set("abc")
 
-    r_id = var.trace("r", lambda *a: print("Read"))
-    w_id = var.trace("w", lambda *a: print("Write"))
+    def r_observer(*args):
+        print("Reading")
 
-    var.set(var.get() + "d")  # triggers write
-    var.trace_vdelete("r", r_id)
-    var.trace_vdelete("w", w_id)
+
+    def w_observer(*args):
+        print("Writing")
+
+
+    dummy = tk.Tk()    # we need this although we won't display any windows
+    variable = tk.StringVar()
+    variable.set("abc")
+    r_obsid = variable.trace("r", r_observer)
+    w_obsid = variable.trace("w", w_observer)
+    variable.set(variable.get() + 'd')  # read followed by write
+    variable.trace_vdelete("r", r_obsid)
+    variable.set(variable.get() + 'e')
+    variable.trace_vdelete("w", w_obsid)
+    variable.set(variable.get() + 'f')
+    print(variable.get())
     ```
 
 -  Observers monitor variable changes automatically.
 
- 
+
+## Module 2
+
+### 1. Button
+
+-  Properties
+    | Property   | Meaning |
+    | :--------- | :------ |
+    | `command`  | The callback invoked when the button is clicked. |
+    | `justify`  | How the text inside the button is justified: `LEFT`, `CENTER`, or `RIGHT`. |
+    | `state`    | Button’s state: `DISABLED` → unclickable and gray, `NORMAL` → active, `ACTIVE` → when mouse hovers over it. |
+
+-  Methods
+    | Method     | Role |
+    | :--------- | :--- |
+    | `flash()`  | Makes the button flash a few times without changing its state. |
+    | `invoke()` | Runs the callback assigned to the button and returns its value (the proper way to call it programmatically). |
 
 
 
+### 2. Checkbutton
+
+- Properties
+
+    | Property    | Meaning |
+    | :---------- | :------ |
+    | `bd`        | Frame (border) width of the checkbutton (default: 2 pixels). |
+    | `command`   | Callback invoked when the checkbutton changes state. |
+    | `justify`   | Same as in `Button`. |
+    | `state`     | Same as in `Button`. |
+    | `variable`  | An observable `IntVar` reflecting the checkbutton’s state (`1` if checked, `0` otherwise). |
+    | `offvalue`  | Value assigned to `variable` when unchecked (default: `0`). |
+    | `onvalue`   | Value assigned to `variable` when checked (default: `1`). |
+
+- Methods
+
+    | Method       | Role |
+    | :----------- | :--- |
+    | `deselect()` | Unchecks the widget. |
+    | `flash()`    | Same as in `Button`. |
+    | `invoke()`   | Same as in `Button`. |
+    | `select()`   | Checks the widget. |
+    | `toggle()`   | Toggles the widget (switches its state to the opposite one). |
 
 
+    code:
+
+    ```py
+    import tkinter as tk
+
+    def switch():
+        if button1.cget("state") == tk.NORMAL:
+            button1.flash()
+            button1.config(state = tk.DISABLED)
+            button2["text"] = "Enable"
+        else:
+            button1.flash()
+            button1.config(state = tk.NORMAL)
+            button2["text"] = "Disable"
 
 
+    def mousein(*args):
+        button1["bg"] = "grey"
+
+    def mouseout(*args):
+        button1["bg"] = "white"
+
+    main = tk.Tk()
+
+    button1 = tk.Button(main, text = "hi", state = tk.NORMAL)
+    button1.pack()
+    button1.bind("<Enter>", mousein)
+    button1.bind("<Leave>", mouseout)
+
+    button2 = tk.Button(main, text = "Disable",
+                        command = switch)
+    button2.pack()
+    main.mainloop()
+
+    ```
 
 
-
-
-
-
-
-
-
-
-
-
-    

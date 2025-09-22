@@ -1037,4 +1037,47 @@
 
     ```
 
+    ```py
+    import tkinter as tk
+    from tkinter import messagebox
+
+    window = tk.Tk()
+
+    def show():
+        messagebox.showinfo("Status", "First:" + str(count1.get()) + ", Second:" + str(count2.get()))
+        
+
+    def hit2():
+        count2.set(count1.get())
+        
+
+    def hit1():
+        count1.set(count2.get())
+        
+
+    count1 = tk.IntVar()
+    count2 = tk.IntVar()
+
+    pizza = tk.Radiobutton(window, text = "Pizza", variable=count1, value = 1, command = hit2)
+    pizza.pack()
+
+    pep = tk.Radiobutton(window, text = "Pepperoni", variable=count1, value = 1, command = hit2)
+    pep.pack()
+
+    water = tk.Radiobutton(window, text = "Water", variable=count2, value = 2, command = hit1)
+    water.pack()
+
+    juice = tk.Radiobutton(window, text = "Juice", variable=count2, value = 2, command = hit1)
+    juice.pack()
+
+
+    show_button = tk.Button(window, text = "Show status", command=show)
+    show_button.pack()
+
+    window.mainloop()
+    ```
+
+### Non-clickable widgets
+
+
 

@@ -1135,9 +1135,11 @@ message.pack()
 window.mainloop()
 ```
 
-#### 3. `takefocus` frame property & `LabelFrame()`
+#### 3. `takefocus` & `labelanchour`frame propertes for `LabelFrame()`
 
+- The `LabelFrame` widget is a Frame enriched with a visible border and a title (also visible).
 - The `takefocus` property controls whether a widget can be focused using the **Tab** key during keyboard navigation.
+- The `labelanchour` property puts labels on one of the 12 positions on the `LabelFrame` borders (e.g. n, ne, nw)
 
 code
 

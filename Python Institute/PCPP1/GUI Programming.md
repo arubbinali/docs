@@ -1077,7 +1077,98 @@
     window.mainloop()
     ```
 
-### Non-clickable widgets
+### 3. Non-clickable widgets
+#### 1. `textvariable`
+
+| Label property | Property meaning |
+|----------------|------------------|
+| `text`         | a string which will be **shown** within the `Label`; note: newline characters (`\n`) are interpreted in the usual way |
+| `textvariable` | the same as for `text`, but makes use of an observable `StringVar` variable, so if you change the variable’s alteration, it will be immediately visible on the screen. |
+
+code:
+
+```py
+import tkinter as tk
+window = tk.Tk()
+
+def changetext():
+    global counter
+    return f"Count = {count}"
+
+def clicked():
+    global count
+    count += 1
+    finalstring.set(changetext())
+
+count = 0
+finalstring = tk.StringVar()
+finalstring.set("Count = 0")
+
+click = tk.Button(window, text = "Click me", command = clicked)
+click.pack()
+text = tk.Label(window, textvariable= finalstring, height = 5)
+text.pack()
+
+window.mainloop()
+```
+
+#### 2. `Message`
+
+- Very similar to the Label (among other things, it has the same properties) but is able to format the presented text by fitting it automatically to the widget’s size.
+
+code:
+```py
+import tkinter as tk
 
 
+def do_it_again():
+    text.set(text.get() + "and again...")
 
+
+window = tk.Tk()
+button = tk.Button(window, text="Go ahead!", command=do_it_again)
+button.pack()
+text = tk.StringVar()
+message = tk.Message(window, textvariable=text, width=400)
+text.set("You did it again... ")
+message.pack()
+window.mainloop()
+```
+
+#### 3. `takefocus` frame property & `LabelFrame()`
+
+- The `takefocus` property controls whether a widget can be focused using the **Tab** key during keyboard navigation.
+
+code
+
+```py
+import tkinter as tk
+
+window = tk.Tk()
+
+frame_1 = tk.Frame(window, width=200, height=100, bg='white')
+frame_2 = tk.Frame(window, width=200, height=100, bg='yellow')
+
+label_frame_1 = tk.LabelFrame(window, text="Frame #1",
+                              width=200, height=100, bg='white')
+label_frame_2 = tk.LabelFrame(window, text="Frame #2",
+                              labelanchor='se', width=200, height=100, bg='yellow')
+
+# Buttons inside Frame 1
+button_1_1 = tk.Button(label_frame_1, text="Button #1 (Focusable)", takefocus=True)
+button_1_2 = tk.Button(label_frame_1, text="Button #2 (NOT Focusable)", takefocus=False)
+
+# Buttons inside Frame 2
+button_2_1 = tk.Button(label_frame_2, text="Button #1 (Focusable)", takefocus=True)
+button_2_2 = tk.Button(label_frame_2, text="Button #2 (NOT Focusable)", takefocus=False)
+
+# Place buttons in frames
+button_1_1.place(x=10, y=10)
+button_1_2.place(x=10, y=50)
+button_2_1.grid(column=0, row=0)
+button_2_2.grid(column=1, row=1)
+
+label_frame_1.pack()
+label_frame_2.pack()
+window.mainloop()
+```

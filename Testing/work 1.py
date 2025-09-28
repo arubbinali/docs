@@ -1,33 +1,25 @@
 import tkinter as tk
-import customtkinter as ctk
+from tkinter import messagebox
 
-# Initialize the main window
-window = ctk.CTk()
-window.geometry("800x600")
 
-# Set the main window background color (optional)
-window.configure(bg="#282828")  # Darker background for the window
+def about_app():
+    messagebox.showinfo("App", "The application\nthat does nothing")
 
-# Create the header frame (this will be your tab area)
-header_frame = ctk.CTkFrame(window, width=800, height=50, corner_radius=0, fg_color="#1E1E1E")  # Darker tab
-header_frame.place(x=0, y=0)
 
-# Add buttons to the header frame
-button1 = ctk.CTkButton(header_frame, text="Home", width=80, height=40)
-button1.place(x=10, y=5)
+def are_you_sure():
+    if messagebox.askyesno("", "Are you sure you want to quit the App?"):
+        window.destroy()
 
-button2 = ctk.CTkButton(header_frame, text="Settings", width=80, height=40)
-button2.place(x=100, y=5)
 
-button3 = ctk.CTkButton(header_frame, text="About", width=80, height=40)
-button3.place(x=190, y=5)
+window = tk.Tk()
 
-# Example content below the header
-content_frame = ctk.CTkFrame(window, width=800, height=550, corner_radius=0)
-content_frame.place(x=0, y=50)
+main_menu = tk.Menu(window)
+window.config(menu=main_menu)
+sub_menu_file = tk.Menu(main_menu)
+main_menu.add_cascade(label="File", menu=sub_menu_file, underline=0)
+# add the QUIT action to the submenu
+sub_menu_file.add_command(label="Quit", underline=0, command=are_you_sure)
+sub_menu_help = tk.Menu(main_menu)
+main_menu.add_command(label="About...", command=about_app, underline=1)
 
-label = ctk.CTkLabel(content_frame, text="Main Content Area", font=("Roboto", 24))
-label.pack(pady=20)
-
-# Run the main event loop
 window.mainloop()

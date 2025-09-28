@@ -1174,3 +1174,149 @@ label_frame_1.pack()
 label_frame_2.pack()
 window.mainloop()
 ```
+
+#### 4. `Entry` properties & methods
+- Tkinter `Entry` Widget Properties
+
+    | Entry property | Property meaning |
+    | :--- | :--- |
+    | **`command`** | Although **`Entry`** is obviously a clickable widget, it doesn't allow you to bind a callback through the **`command`** property. You can observe and control all occurring changes instead by setting the **tracer function** for the **observable variable** which cooperates with **`Entry`** (we'll show you this - be patient!) |
+    | **`show`** | a string assigned to this property will be displayed instead of the **actual** characters entered into the input field; e.g., if you set `show='*'`, this will enable the widget to safely edit the user's password |
+    | **`state`** | the same as for **`Button`** |
+    | **`textvariable`** | an observable **`StringVar`** reflecting the current state of the input field |
+    | **`width`** | the input field's **width** (in characters) |
+
+
+
+- Tkinter `Entry` Widget Methods
+
+    | Entry method | Method role |
+    | :--- | :--- |
+    | **`get()`** | returns the current input field's contents as a **string** |
+    | **`set(s)`** | sets the whole input field's contents with the **`s`** string |
+    | **`delete(first, last=None)`** | deletes a part of the input field's contents; **`first`** and **`last`** can be integers with values indexing the string; if the **`last`** argument is omitted, a single character is deleted; if **`last`** is specified as **`END`**, it points to the place after the last field's character |
+    | **`insert(index, s)`** | inserts the **`s`** string at the field position pointed to by **`index`** |
+
+- `focus_set` - to focus the widget automatically
+
+code:
+
+```py
+import tkinter as tk
+
+def digits_only(*args):
+    global last_string
+    string = text.get()
+    if string == '' or string.isdigit():  # Field's content is valid.
+        last_string = string
+    else:
+        text.set(last_string)
+
+last_string = ''
+window = tk.Tk()
+text = tk.StringVar()
+entry = tk.Entry(window, textvariable=text)
+text.set(last_string)
+text.trace('w', digits_only)
+entry.pack()
+entry.focus_set()
+window.mainloop()
+```
+
+#### 5. Menus
+
+- `Menu()` - create a tkinter menu
+- `config()` - to embed the main menu in the window
+- `add_cascade()` - add a submenu to the menu
+- `add_command()` - bind a callback to the menu
+
+    code:
+
+    ```py
+    import tkinter as tk
+    from tkinter import messagebox
+
+
+    def about_app():
+        messagebox.showinfo("App", "The application\nthat does nothing")
+
+
+    window = tk.Tk()
+
+    # main menu creation
+    main_menu = tk.Menu(window)
+    window.config(menu=main_menu)
+
+    # 1st main menu item: an empty (as far) submenu
+    sub_menu_file = tk.Menu(main_menu)
+    main_menu.add_cascade(label="File", menu=sub_menu_file)
+
+    # 2nd main menu item: a simple callback
+    sub_menu_help = tk.Menu(main_menu)
+    main_menu.add_command(label="About...", command=about_app)
+
+    window.mainloop()
+    ```
+
+- `underline`to set hot keys
+    - `underline = 0` = ALT + F
+    - `underline = 1` = ALT + B
+    - all hot keys must be unique
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def about_app():
+            messagebox.showinfo("App", "The application\nthat does nothing")
+
+
+        window = tk.Tk()
+
+        main_menu = tk.Menu(window)
+        window.config(menu=main_menu)
+        sub_menu_file = Menu(main_menu)
+        # setting the hotkey to "Alt-F"
+        main_menu.add_cascade(label="File", menu=sub_menu_file, underline=0)
+        sub_menu_help = tk.Menu(main_menu)
+        # setting the hotkey to "Alt-B"
+        main_menu.add_command(label="About...", command=about_app, underline=1)
+
+        window.mainloop()
+        ```
+    - `messagebox.askyesno()` - returns True if Yes is chosen or False otherwise.
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def about_app():
+            messagebox.showinfo("App", "The application\nthat does nothing")
+
+
+        def are_you_sure():
+            if messagebox.askyesno("", "Are you sure you want to quit the App?"):
+                window.destroy()
+
+
+        window = tk.Tk()
+
+        main_menu = tk.Menu(window)
+        window.config(menu=main_menu)
+        sub_menu_file = tk.Menu(main_menu)
+        main_menu.add_cascade(label="File", menu=sub_menu_file, underline=0)
+        # add the QUIT action to the submenu
+        sub_menu_file.add_command(label="Quit", underline=0, command=are_you_sure)
+        sub_menu_help = tk.Menu(main_menu)
+        main_menu.add_command(label="About...", command=about_app, underline=1)
+
+        window.mainloop()
+        ```
+
+- 

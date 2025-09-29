@@ -1433,3 +1433,106 @@ window.mainloop()
 
     window.mainloop()
     ```
+
+- `accelerator` - to display a keyboard shortcut (accelerator text) next to the menu item
+- `bind`
+    - to bind a key
+    - attaches an event only to a specific widget
+    - the event handler will run only if that widget has focus (or is directly interacted with).
+    - e.g. `window.bind("<Control-q>", function)`
+- `bind_all`
+    - to bind a key
+    - attaches an event handler to the entire application (all widgets).
+    - the event will trigger no matter which widget has focus, as long as the event happens inside the Tkinter window.
+    - e.g. `window.bind_all("<Control-a>", function)`
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def about_app():
+            messagebox.showinfo("App", "The application\nthat does nothing")
+
+
+        def are_you_sure(event=None):
+            if messagebox.askyesno("", "Are you sure you want to quit the App?"):
+                window.destroy()
+
+
+        def open_file():
+            messagebox.showinfo("Open doc", "We'll open a file here...")
+
+
+        window = tk.Tk()
+
+        main_menu = tk.Menu(window)
+        window.config(menu=main_menu)
+        sub_menu_file = tk.Menu(main_menu, tearoff=0)
+        main_menu.add_cascade(label="File", menu=sub_menu_file, underline=0)
+        sub_menu_file.add_command(label="Open...", underline=0, command=open_file)
+        sub_sub_menu_file = tk.Menu(sub_menu_file, tearoff=0)
+        sub_menu_file.add_cascade(label="Open recent file...", underline=5, menu=sub_sub_menu_file)
+
+        for i in range(8):
+            number = str(i + 1)
+            sub_sub_menu_file.add_command(label=number + ". file.txt", underline=0)
+
+        sub_menu_file.add_separator()
+        sub_menu_file.add_command(label="Quit", accelerator="Ctrl-Q",
+                                underline=0, command=are_you_sure)
+        sub_menu_help = tk.Menu(main_menu)
+        main_menu.add_command(label="About...", command=about_app, underline=1)
+
+        window.bind_all("<Control-q>", are_you_sure)
+        window.mainloop()
+        ```
+
+- `entryconfigure()` to manipulate a menu’s item
+    - takes 2 arguments, `item.entryconfigure(i, prop=value)`
+    - the first is an integer index of the modified item (entry)
+    - the second is a keyworded argument pointing to the modified property
+    - e.g. `sub_menu.entryconfigure(1, state=accessible)`
+    - | Property     | Property role                                                                 |
+        |--------------|-------------------------------------------------------------------------------|
+        | `postcommand`| a **callback** invoked every time a menu’s item is activated                  |
+        | `tearoff`    | set to zero **removes** the tear-off decoration from the top of the cascade   |
+        | `state`      | when set to **DISABLED**, the menu item is grayed and inaccessible; setting it to **ACTIVE** restores its normal functionality |
+        | `accelerator`| a **string** describing a hot-key bound to the menu’s item                    |
+
+
+        | Method                        | Method role                                                                 |
+        |-------------------------------|------------------------------------------------------------------------------|
+        | `add_cascade(prop=val, …)`    | adds a **cascade** to the menu’s item                                         |
+        | `add_command(prop=val, …)`    | assigns an **action** to the menu’s item                                     |
+        | `add_separator()`             | adds an **separator** line to the menu                                       |
+        | `entryconfigure(i, prop=val,…)` | modifies the *i*-th menu item’s property named **prop**                    |
+
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        def on_off():
+            global accessible
+            if accessible == tk.DISABLED:
+                accessible = tk.ACTIVE
+            else:
+                accessible = tk.DISABLED
+            sub_menu.entryconfigure(0, state=accessible)
+
+        accessible = tk.DISABLED
+        window = tk.Tk()
+        menu = tk.Menu(window)
+        window.config(menu=menu)
+        sub_menu = tk.Menu(menu, tearoff=0)
+        menu.add_cascade(label="Menu", menu=sub_menu)
+        sub_menu.add_command(label="On/Off", command=on_off)
+        sub_menu.add_command(label="Switch", state=tk.DISABLED)
+        window.mainloop()
+        ```
+
+- 

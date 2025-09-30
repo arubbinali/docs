@@ -1223,7 +1223,7 @@ entry.focus_set()
 window.mainloop()
 ```
 
-#### 5. Menus
+### 4. Menus
 
 - `Menu()` - create a tkinter menu
 - `config()` - to embed the main menu in the window
@@ -1535,7 +1535,7 @@ window.mainloop()
         window.mainloop()
         ```
 
-#### 6. Interacting with the Window & User
+### 5. Interacting with the Window & User
 
 - A basic window title counter on click
 
@@ -1791,5 +1791,5 @@ window.mainloop()
         button.pack()
         window.mainloop()
         ```
-### 4. Canvas
-#### 
+### 6. Canvas
+

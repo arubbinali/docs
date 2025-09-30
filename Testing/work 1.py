@@ -1,15 +1,14 @@
 import tkinter as tk
+from tkinter import messagebox
 
 
-def click(*args):
-    global counter
-    if counter > 0:
-        counter -= 1
-    window.title(str(counter))
+def question():
+    answer = messagebox.askretrycancel("?", "I'm going to format your hard drive")
+    print(answer)
 
 
-counter = 4
 window = tk.Tk()
-window.title(str(counter))
-window.bind("<Button-1>", click)
+button = tk.Button(window, text="What are your plans?", command=question)
+button.pack()
 window.mainloop()
+

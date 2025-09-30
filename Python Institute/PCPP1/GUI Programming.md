@@ -1535,23 +1535,200 @@ window.mainloop()
         window.mainloop()
         ```
 
-- 
+#### 6. Interacting with the Window & User
+
+- A basic window title counter on click
+
+    code:
+
+    ```py
+    import tkinter as tk
+
+    def click(*args):
+        global counter
+        if counter > 0:
+            counter -= 1
+        window.title(str(counter))
+
+    counter = 10
+    window = tk.Tk()
+    window.title(str(counter))
+    window.bind("<Button-1>", click)
+    window.mainloop()
+    ```
+
+- `.call` & `PhotoImage()`
+    - `.call` to run raw Tcl/Tk commands as if you were writing Tcl code instead of Python
+    - `PhotoImage()` creates a Tk image object and passes it along
+    - Changing the main window’s icon
+    - code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        window.title('Icon?')
+        window.tk.call('wm', 'iconphoto', window._w, PhotoImage(file='logo.png'))
+        window.bind("&lt;Button-1&gt;", lambda e: window.destroy())
+        window.mainloop()
+        ```
+
+- `geometry()`
+    - to resize the main window in a custom way
+    - takes in a string for the dimensions; `width x height`
+    
+        code:
+
+        ```py
+        import tkinter as tk
+
+        def click(*args):
+            global size, grows
+            if grows:
+                size += 50
+                if size >= 500:
+                    grows = False
+            else:
+                size -= 50
+                if size <= 100:
+                    grows = True
+            window.geometry(str(size) + "x" + str(size))
+
+        size = 100
+        grows = True
+        window = tk.Tk()
+        window.geometry("100x100")
+        window.bind("<Button-1>", click)
+        window.mainloop()
+        ```
+
+- `minsize()`
+    - to specify the minimum dimensions of a window
+    - takes 2 arguments, `width` & `height`
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        window.minsize(width=250, height=200)
+        window.geometry("500x500")
+        window.mainloop()
+        ```
+
+- `maxsize()`
+    - to specify the maximum dimensions of a window
+    - takes 2 arguments, `width` & `height`
+
+        code:
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        window.maxsize(width=500, height=300)
+        window.geometry("200x200")
+        window.mainloop()
+        ```
+
+- `resizable`
+    - to disable the user from changing the width, height or both of a window
+
+        code:
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        window.resizable(width=False, height=False)
+        window.geometry("400x200")
+        window.mainloop()
+        ```
+
+- `protocol()`
+    - to intercept and handle window manager events (things the OS/desktop does to your window)
+    - most common is `protocol("WM_DELETE_WINDOW", callback)`
+        
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+        def really():
+            if messagebox.askyesno("?", "Wilt thou be gone?"):
+                window.destroy()
+
+        window = tk.Tk()
+        window.protocol("WM_DELETE_WINDOW", really)
+        window.mainloop()
+        ```
+
+- `messagebox`
+    - `askyesno` - to get yes/no user responses, returns True if Yes or False otherwise
+    - | Option     | Purpose                | Example                                |
+        |------------|------------------------|----------------------------------------|
+        | `title`    | Window title           | `title="Hello!"`                       |
+        | `message`  | Dialog text            | `message="Be careful!\nLine 2"`        |
+        | `options`  | Which buttons appear   | `askyesno`, `askretrycancel`, etc.     |
+        | `default`  | Pre-selected button    | `default=messagebox.NO`                |
+        | `icon`     | Icon type              | `icon="warning"`                       |
+    - code:
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
 
 
+        def question():
+            answer = messagebox.askyesno("?", "To be or not to be?")
+            print(answer)
 
 
+        window = tk.Tk()
+        button = tk.Button(window, text="Ask the question!", command=question)
+        button.pack()
+        window.mainloop()
+        ```
+
+- `askokcancel()`
+    -  creates a dialog equipped with two buttons titled `OK` and `Cancel` (it returns `True` for `OK` and `False` otherwise)
+
+        code:
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
 
 
+        def question():
+            answer = messagebox.askokcancel("?", "I'm going to format your hard drive")
+            print(answer)
 
 
+        window = tk.Tk()
+        button = tk.Button(window, text="What are your plans?", command=question)
+        button.pack()
+        window.mainloop()
+        ```
+
+- `askretrycancel()`
+    -  creates a dialog containing a **warning** sign instead of a question mark and two buttons titled `Retry` and `Cancel` (it returns `True` for `Retry` and `False` otherwise).
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
 
 
+        def question():
+            answer = messagebox.askretrycancel("?", "I'm going to format your hard drive")
+            print(answer)
 
 
+        window = tk.Tk()
+        button = tk.Button(window, text="What are your plans?", command=question)
+        button.pack()
+        window.mainloop()
+        ```
 
-
-
-
-
-
-
+- `askquestion()`
+    -  displays two buttons titled `Yes` and `No` along with a question mark icon, but **returns a string** `Yes` when the user’s answer is positive and `No` otherwise

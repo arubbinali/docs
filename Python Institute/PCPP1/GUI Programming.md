@@ -1731,4 +1731,65 @@ window.mainloop()
         ```
 
 - `askquestion()`
-    -  displays two buttons titled `Yes` and `No` along with a question mark icon, but **returns a string** `Yes` when the user’s answer is positive and `No` otherwise
+    -  displays two buttons titled `Yes` and `No` along with a question mark icon, but **returns a string** `yes` when the user’s answer is positive and `no` otherwise
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def question():
+            answer = messagebox.askquestion("?", "I'm going to format your hard drive")
+            print(answer)
+
+
+        window = tk.Tk()
+        button = tk.Button(window, text="What are your plans?", command=question)
+        button.pack()
+        window.mainloop()
+        ```
+
+- `showerror()`
+    - displays a red warning icon and doesn’t ask any questions – its only button is titled `OK` and returns a **string** `ok` in every case
+
+        code:
+
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def question():
+            answer = messagebox.showerror("!", "Your code does nothing!")
+            print(answer)
+
+
+        window = tk.Tk()
+        button = tk.Button(window, text="Alarming message", command=question)
+        button.pack()
+        window.mainloop()
+        ```
+
+- `showwarning()`
+    - presents a warning icon and always its only button is titled `OK` and returns a string `ok`.
+
+        code:
+        ```py
+        import tkinter as tk
+        from tkinter import messagebox
+
+
+        def question():
+            answer = messagebox.showwarning("Be careful!", "Pull up before its too late!")
+            print(answer)
+
+
+        window = tk.Tk()
+        button = tk.Button(window, text="What's going on?", command=question)
+        button.pack()
+        window.mainloop()
+        ```
+### 4. Canvas
+#### 

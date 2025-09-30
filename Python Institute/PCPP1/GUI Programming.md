@@ -1791,5 +1791,215 @@ window.mainloop()
         button.pack()
         window.mainloop()
         ```
+
 ### 6. Canvas
 
+- `Canvas()` & `create_line()`
+    - use the `Canvas` constructor to create a canvas
+    - `create_line` takes a sequence of coordinates: `canvas.create_line(x1, y1, x2, y2, x3, y3, ..., options...)`
+        - From (x1, y1) → (x2, y2)
+        - Then (x2, y2) → (x3, y3)
+        - And so on.
+    - | Property name | Property role |
+        |------------|------------------------------------------------------------|
+        | `borderwidth`| canvas border's **width** in pixels (default: 2)           |
+        | `background` (`bg`)| canvas border's **color** (default: the same as the underlying window's color)|
+        | `height`    | canvas **height** (in pixels)                              |
+        | `width`     | canvas **width** (in pixels)                               |
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='yellow')
+        canvas.create_line(10, 380, 200, 10, 380, 380, 10, 380)
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_line()` options
+
+    - | Option name         | Option meaning |
+        |--------------------|------------------------------------------------------------|
+        | `arrow`             | normally, the chain ends aren't marked in any special way, but you may want them to be finished with **arrowheads**; setting the arrow option to **FIRST** results in drawing an arrowhead at the chain's beginning, **LAST** at the chain's end, **BOTH** at both sides of the chain. |
+        | `fill`              | chain **color** (setting the option to an empty string causes the line to be transparent) |
+        | `smooth`            | setting it to **True** rounds the chain's corners using a set of connected parabolas |
+        | `width`             | line **width** (default: 1 pixel) |
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='yellow')
+        canvas.create_line(10, 380, 200, 10, 380, 380, 10, 380,
+                        arrow=tk.BOTH, fill='red', smooth=True, width=3)
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_rectangle()`
+    - the method draws a rectangle specified with two opposite vertices at the `(x0,y0)` and `(x1,y1)` points
+    - | Option name | Option meaning |
+        |------------|------------------------------------------------------------|
+        | `outline`   | rectangle **edge color** (if specified as an empty string, the edge is transparent)|
+        | `fill`      | rectangle **interior color** |
+        | `width`     | rectangle **edge width** in pixels (default: 1)            |
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='black')
+        canvas.create_rectangle(200, 100, 300, 300, outline='white', width=5, fill='red')
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_polygon()`
+    - similar to `create_line()` but the last segment connects to the first automatically
+        
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='black')
+        canvas.create_polygon(20, 380, 200, 68, 380, 380, outline='red', width=5, fill='yellow')
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_oval()`
+    - draws an ellipse inscribed in a rectangle with vertices at the points `(x0,y0)` and `(x1,y1)`
+    - if the rectangle is a square, the ellipse becomes a circle
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='blue')
+        canvas.create_oval(100, 100, 300, 200, outline='red', width=20, fill='white')
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_arc()`
+    - `canvas.create_arc(x0,y0,x1,y1,option...)`
+    - options are the same as for `create_polygon()` except for the folllowing 3 new methods
+    - the method draws the arc of an ellipse inscribed inside a rectangle with vertices at points `(x0,y0)` and `(x1,y1)`
+    - | Option name | Option meaning |
+        |------------|------------------------------------------------------------|
+        | `style`     | can be set to one of the following: **PIESLICE** (default), **CHORD** and **ARC**|
+        | `start`     | the **angle** (in degrees) of the arc's start relative to the X-axis (e.g., 90 means the highest point of the ellipse, while 0 is the right-most point. The default is 0)|
+        | `extent`    | the arc's **span** (in degrees) relative to the start point; note: the span is calculated counter-clockwise. The default is 90 (a quarter of an ellipse)|
+        
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='yellow')
+        canvas.create_arc(10, 100, 380, 300, outline='red', width=5)
+        canvas.create_arc(10, 100, 380, 300, outline='blue', width=5,
+                        style=tk.CHORD, start=90, fill='white')
+        canvas.create_arc(10, 100, 380, 300, outline='green', width=5,
+                        style=tk.ARC, start=180, extent=180)
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_text()`
+    - this method puts text on the `Canvas`, the text is placed inside a rectangle whose center is located at point `(x,y)`:
+        - `c.create_text(x, y, option...)`
+
+    - | Option name | Option meaning |
+        |------------|------------------------------------------------------------|
+        | `fill`      | text **color** |
+        | `font`      | text **font** |
+        | `justify`   | text **justification**: **LEFT** (default), **CENTER**, **RIGHT**|
+        | `text`      | **text** to display (`\n` works as expected)               |
+        | `width`     | normally, the rectangle is as wide as the **longest text line**; using the width option forces the text to be aligned to that size|
+
+        code:
+
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='blue')
+        canvas.create_text(200, 200, text="Mary\nhad\na\nlittle\nlamb",
+                        font=("Arial","40","bold"),
+                        justify=tk.CENTER,
+                        fill='white')
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+- `create_image()`
+    - this method draws an image (a bitmap) on the `Canvas`, The image is placed inside a rectangle whose center is located at point `(x, y)`:
+        - `canvas.create_image(x, y, option...)`
+    - `image` option:
+        - an object of the `PhotoImage` class containing the image itself; the `PhotoImage` class constructor needs a keyword argument named `file` pointing to a **bitmap file** (note: only GIF and PNG formats are accepted); the argument should specify the file’s path
+        
+        code:
+        
+        ```py
+        import tkinter as tk
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='yellow')
+        image = tk.PhotoImage(file='logo.png')
+        canvas.create_image(200, 200, image=image)
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```
+
+    - to use a `JPEG` bitmap:
+        - import the `Image` and `ImageTk` classes from the PIL (Python Image Library) module
+        - build an object of the `Image()` class and use its `open()` method to fetch the bitmap from the file (the argument should specify the file’s path)
+        - convert this object into a `PhotoImage` class object using an `ImageTk` function of the same name;
+        ` continue as usual
+
+        code:
+
+        ```py
+        import tkinter as tk
+        import PIL
+
+        window = tk.Tk()
+        canvas = tk.Canvas(window, width=400, height=400, bg='red')
+        jpg = PIL.Image.open('logo.jpg')
+        image = PIL.ImageTk.PhotoImage(jpg)
+        canvas.create_image(200, 200, image=image)
+        button = tk.Button(window, text="Quit", command=window.destroy)
+        canvas.grid(row=0)
+        button.grid(row=1)
+        window.mainloop()
+        ```

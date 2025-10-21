@@ -16,7 +16,7 @@ try:
 except Exception as exception:
     print("nah", f"\nwe got a problem yo:\n{exception}")
 """
-
+"""
 server_addr = input("What server do you want to connect to? ")
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((server_addr, 11111))
@@ -27,5 +27,13 @@ response = sock.recv(10000)
 sock.shutdown(socket.SHUT_RDWR)
 sock.close()
 print(repr(response))
+"""
+import json
 
+x = 234
+y = json.dumps(x)
+print(type(y))
+print(type(str(x)))
 
+comics = '"The Meaning of Life" by Monty Python\'s Flying Circus'
+print(json.dumps(comics))

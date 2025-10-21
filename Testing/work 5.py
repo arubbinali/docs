@@ -30,6 +30,8 @@ print(repr(response))
 """
 import json
 
+
+"""
 x = 234
 y = json.dumps(x)
 print(type(y))
@@ -37,3 +39,17 @@ print(type(str(x)))
 
 comics = '"The Meaning of Life" by Monty Python\'s Flying Circus'
 print(json.dumps(comics))
+
+my_dict = {'me': "Python", 'pi': 3.141592653589, 'data': (1, 2, 4, 8), 'set': None}
+print(json.dumps(my_dict))
+"""
+
+
+class Who:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+some_man = Who('John Doe', 42)
+print(json.dumps(some_man))

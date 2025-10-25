@@ -44,6 +44,28 @@ my_dict = {'me': "Python", 'pi': 3.141592653589, 'data': (1, 2, 4, 8), 'set': No
 print(json.dumps(my_dict))
 """
 
+"""
+class Who:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+def encode_who(w):
+    if isinstance(w, Who):
+        return w.__dict__
+    else:
+        raise TypeError(w.__class__.__name__ + ' is not JSON serializable')
+
+
+some_man = Who('John Doe', 42)
+print(json.dumps(some_man, default=encode_who))
+print(some_man.__class__.__name__)
+
+
+
+import json
+
 
 class Who:
     def __init__(self, name, age):
@@ -51,5 +73,59 @@ class Who:
         self.age = age
 
 
-some_man = Who('John Doe', 42)
-print(json.dumps(some_man))
+class MyEncoder(json.JSONEncoder):
+    def default(self, w):
+        if isinstance(w, Who):
+            return w.__dict__
+        else:
+            return super().default(self, z)
+
+
+class MyDecoder(json.JSONDecoder):
+    def __init__(self):
+        json.JSONDecoder.__init__(self, object_hook=self.decode_who)
+
+    def decode_who(self, d):
+        return Who(**d)
+
+
+some_man = Who('Jane Doe', 23)
+json_str = json.dumps(some_man, cls=MyEncoder)
+new_man = json.loads(json_str, cls=MyDecoder)
+
+print(type(new_man))
+print(new_man.__dict__)
+
+
+
+print("g")
+
+class hi():
+    def __init__(self, bruh):
+        pass
+
+x = hi(76)
+print(type(x))
+
+"""
+
+
+
+
+
+
+
+import xml.etree.ElementTree
+
+cars_for_sale = xml.etree.ElementTree.parse('cars.xml').getroot()
+print(cars_for_sale.tag)
+for car in cars_for_sale.findall('car'):
+    print('\t', car.tag)
+    for prop in car:
+        print('\t\t', prop.tag, end='')
+        if prop.tag == 'price':
+            print(prop.attrib, end='')
+            print(' =', prop.text)
+        else:
+            print(' =', prop.text)
+        

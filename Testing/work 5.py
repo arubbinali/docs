@@ -420,7 +420,7 @@ else:
     else:
         print('Server error')
 
-"""
+
 
 
 import requests, json
@@ -481,3 +481,14 @@ else:
         print("Resource not found")
     else:
         print('Server error')
+
+
+"""
+
+
+
+
+import requests
+
+reply = requests.get('https://true-islam-library.web.app/')
+print(reply.text)
